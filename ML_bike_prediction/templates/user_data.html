@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bike Price Prediction</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: sans-serif;
+            background: url('/static/bike-background.jpg') no-repeat center center fixed;
+            background-size: cover;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #cls {
+            color: rgb(80, 78, 77);
+            background-color: rgba(0, 0, 0, 0.8); 
+            padding: 30px;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 700px;
+            text-align: center;
+        }
+        #main_h {
+            color: rgb(255, 255, 255); 
+            font-size: 36px;
+            margin-bottom: 20px;
+            box-shadow: 2px 8px 5px rgb(95, 93, 93);
+            padding-bottom: 10px;
+        }
+        #par {
+            font-size: 20px;
+            color: rgb(255, 255, 255); 
+            margin: 10px 0;
+        }
+        input, select {
+            border-radius: 14px;
+            height: 35px;
+            font-size: 22px;
+            text-align: center;
+            box-shadow: 2px 8px 5px rgb(95, 93, 93);
+            border: solid rgb(255, 255, 255); 
+            margin: 10px 0;
+            width: calc(100% - 20px);
+            background-color: rgb(60, 60, 60); 
+            color: rgb(255, 255, 255);
+        }
+        #btn {
+            border: 3px solid black;
+            border-radius: 50px;
+            background-color: rgb(105, 104, 102);
+            width: 220px;
+            height: 45px;
+            font-size: 18px;
+            color: whitesmoke;
+            box-shadow: 2px 8px 5px rgb(95, 93, 93);
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        #btn:hover {
+            background-color: rgb(240, 238, 230);
+            color: rgb(19, 18, 18);
+            border-color: transparent;
+            box-shadow: 2px 8px 5px rgb(20, 20, 20);
+        }
+        #pred {
+            margin: 20px 0;
+            color: rgb(255, 255, 255); 
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <div id="cls">
+        <form action="{{ url_for('predict') }}" method="post" id="formm">
+            <h2 id="main_h">Old Bikes Price Prediction 😊</h2>
+            <p id="par"><b>Select Your Bike</b></p>
+            <select name="brand_name" id="fifth" required>
+                <option value="2">Royal Enfield</option>
+                <option value="10">KTM</option>
+                <option value="7">Bajaj</option>
+                <option value="15">Harley-Davidson</option>
+                <option value="4">Yamaha</option>
+                <option value="5">Honda</option>
+                <option value="8">Suzuki</option>
+                <option value="1">TVS</option>
+                <option value="12">Kawasaki</option>
+                <option value="14">Hyosung</option>
+                <option value="9">Benelli</option>
+                <option value="11">Mahindra</option>
+                <option value="3">Triumph</option>
+                <option value="13">Ducati</option>
+                <option value="17">BMW</option>
+            </select><br><br>
+            <p id="par"><b>Kms Driven</b></p>
+            <input name="Kms_Driven" type="number" id="first" required><br><br>
+            <p id="par"><b>Number of Owners</b></p>
+            <input name="owner" type="number" id="second" required><br><br>
+            <p id="par"><b>Age of Bike (Years)</b></p>
+            <input type="number" name="age" id="third" required><br><br>
+            <p id="par"><b>Power (CC)</b></p>
+            <input type="number" name="power" id="forth" required><br><br>
+            <button type="submit" id="btn">CLICK ME</button>
+            <br><br>
+            <h3 id="pred">Bike 🏍 price will be around 👉 {{ prediction_text }}</h3>
+        </form>
+    </div>
+</body>
+</html>
