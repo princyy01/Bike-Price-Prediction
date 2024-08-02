@@ -28,7 +28,6 @@ def predict():
         # return jsonify(user_data)
         prediction = str(round(pred, 2))
         return render_template('user_data.html', prediction_text=prediction)
-
     
 if __name__ =="__main__":
     app.run(debug=True)     
